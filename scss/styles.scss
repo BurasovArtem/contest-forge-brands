@@ -1,0 +1,104 @@
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+  $src: null;
+
+  $extmods: (
+    eot: "?",
+    svg: "#" + str-replace($name, " ", "_")
+  );
+
+  $formats: (
+    otf: "opentype",
+    ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+    $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+    $src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: quote($name);
+    font-weight: $weight;
+    font-style: $style;
+
+    font-display: block;
+    src: $src;
+  }
+}
+
+@include font-face('ManropeLight', 'fonts/Manrope-Light', normal, normal, ttf);
+@include font-face('ManropeRegular', 'fonts/Manrope-Regular', normal, normal, ttf);
+@include font-face('ManropeMedium', 'fonts/Manrope-Medium', normal, normal, ttf);
+@include font-face('ManropeSemiBold', 'fonts/Manrope-SemiBold', normal, normal, ttf);
+@include font-face('ManropeBold', 'fonts/Manrope-Bold', normal, normal, ttf);
+@include font-face('ManropeExtraBold', 'fonts/Manrope-ExtraBold', normal, normal, ttf);
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  font-family: ManropeMedium;
+}
+
+body {
+  background-color: #B7BABE;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .logo {
+    margin-top: 18px;
+  }
+  .title {
+    font-size: 84px;
+    line-height: 115px;
+    text-align: center;
+    color: #191B1D;
+    font-family: ManropeExtraBold;
+  }
+  .description {
+    font-size: 28px;
+    line-height: 38px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: ManropeSemiBold;
+    max-width: 712px;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  .main-section {
+    width: calc(50% - 1px);
+    height: auto;
+    padding: 20px 0;
+    &:nth-child(1), &:nth-child(2) {
+      border-top: 1px solid black;
+    }
+    &:nth-child(odd) {
+      border-right: 1px solid black;
+      border-bottom: 1px solid black;
+    }
+    &:nth-child(even) {
+      border-bottom: 1px solid black;
+    }
+  }
+}

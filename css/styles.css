@@ -1,0 +1,89 @@
+@font-face {
+  font-family: "ManropeLight";
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  src: url("fonts/Manrope-Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "ManropeRegular";
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  src: url("fonts/Manrope-Regular.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "ManropeMedium";
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  src: url("fonts/Manrope-Medium.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "ManropeSemiBold";
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  src: url("fonts/Manrope-SemiBold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "ManropeBold";
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  src: url("fonts/Manrope-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "ManropeExtraBold";
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  src: url("fonts/Manrope-ExtraBold.ttf") format("truetype"); }
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  font-family: ManropeMedium; }
+
+body {
+  background-color: #B7BABE; }
+
+header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  header .logo {
+    margin-top: 18px; }
+  header .title {
+    font-size: 84px;
+    line-height: 115px;
+    text-align: center;
+    color: #191B1D;
+    font-family: ManropeExtraBold; }
+  header .description {
+    font-size: 28px;
+    line-height: 38px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: ManropeSemiBold;
+    max-width: 712px; }
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  main .main-section {
+    width: calc(50% - 1px);
+    height: auto;
+    padding: 20px 0; }
+    main .main-section:nth-child(1), main .main-section:nth-child(2) {
+      border-top: 1px solid black; }
+    main .main-section:nth-child(odd) {
+      border-right: 1px solid black;
+      border-bottom: 1px solid black; }
+    main .main-section:nth-child(even) {
+      border-bottom: 1px solid black; }
